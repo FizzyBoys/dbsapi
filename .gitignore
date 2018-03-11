@@ -1,0 +1,9 @@
+#node modules
+node_modules
+
+# yarn
+yarn-debug.log
+yarn-error.log
+
+# system file
+ds_store
