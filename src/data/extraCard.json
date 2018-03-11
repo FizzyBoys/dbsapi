@@ -1,0 +1,20 @@
+[
+	{
+		"name": "Buu Make you Cookie",
+		"collectorsNum": "BT3-054",
+		"type": "Extra",
+		"color": "Blue",
+		"energy": [1, "1U"],
+		"series": "CROSS WORLDS",
+		"rarity": "C",
+		"skills": [
+			{
+				"keywords": ["Counter:Attack"],
+				"text":
+					"Negate the attack. Then, if your Leader Card is ＜Majin Buu＞, you may place 1 card from your hand in the Drop Area. If you do so, choose 1 of your ＜Majin Buu＞ and 1 of your opponent's Battle Cards with an energy cost of 3 or less. Place the chosen opponent Battle Card under the chosen ＜Majin Buu＞."
+			}
+		],
+		"tournamentRelease": "March 9, 2018",
+		"img": "http://www.dbs-cardgame.com/images/cardlist/cardimg/BT3-054.png"
+	}
+]
