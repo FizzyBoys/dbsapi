@@ -14,5 +14,12 @@ export class CardsController {
 				res.send(data);
 			});
 		});
+
+		app.post('/create', (req, res) => {
+			let { body } = req;
+			service.createCard(mongo, body).then(confirmation => {
+				res.send(confirmation);
+			});
+		});
 	}
 }

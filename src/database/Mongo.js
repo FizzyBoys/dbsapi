@@ -14,12 +14,22 @@ export class Mongo {
 			}
 		);
 	}
-	async query() {
+	async getAll() {
 		try {
 			return this.db
 				.collection('test')
 				.find()
 				.toArray();
+		} catch (err) {
+			throw new Error('connection not found');
+		}
+	}
+	async create(payload) {
+		try {
+			if (Array.isArray(payload)) {
+				return this.db.collection('test').insertMany(payload);
+			}
+			return this.db.collection('test').insertOne(payload);
 		} catch (err) {
 			throw new Error('connection not found');
 		}
