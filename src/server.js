@@ -4,12 +4,12 @@ import { CardsController } from './controllers/CardsController';
 
 const app = express();
 const M = new Mongo();
-const CC = new CardsController();
+const CC = new CardsController(app, M);
 
 M.connect().then(
-    app.listen(7777, () => {
-        console.log('initiating dragon balls on 7777');
-    })
+	app.listen(7777, () => {
+		console.log('initiating dragon balls on 7777');
+	})
 );
 
-CC.makeRoutes(app, M);
+CC.makeRoutes();
