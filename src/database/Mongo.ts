@@ -1,20 +1,25 @@
-import MongoClient from 'mongodb';
+import { Db, MongoClient, MongoError } from 'mongodb';
 
 export class Mongo {
+	private db: Db;
+
 	constructor() {
-		this.db;
+		// TODO: figure out a better way to do this
+		this.db = null;
 	}
-	async connect() {
+	public async connect(): Promise<void> {
 		MongoClient.connect(
 			'mongodb://dbsapi:mustGetTheDragonBalls@ds111059.mlab.com:11059/dbsdata',
-			(err, client) => {
-				if (err) return console.log(err);
+			(err: MongoError, client) => {
+				if (err) {
+					throw new Error(`The Connection cannot be established ${err}`);
+				}
 				this.db = client.db('dbsdata');
 				return true;
 			}
 		);
 	}
-	async getAll() {
+	public async getAll(): Promise<any> {
 		try {
 			return this.db
 				.collection('test')
@@ -24,7 +29,7 @@ export class Mongo {
 			throw new Error('connection not found');
 		}
 	}
-	async create(payload) {
+	public async create(payload: any): Promise<any> {
 		try {
 			if (Array.isArray(payload)) {
 				return this.db.collection('test').insertMany(payload);
