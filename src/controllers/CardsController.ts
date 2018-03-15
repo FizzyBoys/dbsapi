@@ -7,9 +7,11 @@ import { CardsService } from '../services/CardsService';
 export class CardsController {
 	private app: any;
 	private cardService: CardsService;
+	private mongo: Mongo;
 
-	constructor(app, service) {
+	constructor(app, mongo, service) {
 		this.app = app;
+		this.mongo = mongo;
 		this.cardService = service;
 	}
 
@@ -22,7 +24,6 @@ export class CardsController {
 			});
 		});
 
-<<<<<<< HEAD
 		app.post(
 			'/create',
 			basicAuth({ users: { admin: 'admin' } }),
@@ -33,14 +34,6 @@ export class CardsController {
 					.then(confirmation => res.status(200).send(confirmation));
 			}
 		);
-=======
-		app.post('/create', (req: Request, res: Response) => {
-			const { body } = req;
-			cardService.createCard(body).then(confirmation => {
-				res.status(200).send(confirmation);
-			});
-		});
->>>>>>> feature(none): added improved error handling to mongo
 
 		app.delete(
 			'/:id',

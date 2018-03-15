@@ -1,15 +1,24 @@
+import { BattleCardModel, RawBattleCard } from '../models/battleCardModel';
 import { Mongo } from '../database/Mongo';
+
 export class CardsService {
+	private model: BattleCardModel;
 	private mongo: Mongo;
 
-	constructor(mongo: Mongo) {
+	constructor(model, mongo) {
+		this.model = model;
 		this.mongo = mongo;
 	}
-
 	public getAll() {
+<<<<<<< ca0d2e8280c380f959d39f2f2e8898aec36d0bcd
 		return this.mongo.getAll().then((data: object) => {
 			return data;
 		});
+=======
+		return this.mongo
+			.getAll()
+			.then((data: RawBattleCard[]) => this.model.buildMany(data));
+>>>>>>> feature(#13): made Battle Card model
 	}
 	public createCard(payload: any) {
 		return this.mongo.create(payload).then((confirmation: object) => {
