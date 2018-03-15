@@ -39,4 +39,12 @@ export class Mongo {
 			throw new Error('connection not found');
 		}
 	}
+
+	public async deleteOne(id: number): Promise<any> {
+		try {
+			return this.db.collection('test').deleteOne({ didItWork: true });
+		} catch (err) {
+			throw new Error('connection not found');
+		}
+	}
 }
