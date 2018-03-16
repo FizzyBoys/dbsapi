@@ -2,7 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.9
+      - image: node:8.0
+    steps:
+      - run:
+          name: "Checking Versions"
+          command: |
+            node --version
+            npm --version
 
     working_directory: ~/repo
 
@@ -16,7 +22,9 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run: 
+          name: Install Dependencies
+          command: yarn install --freeze-lockfile
 
       - save_cache:
           paths:
@@ -24,6 +32,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: yarn test
+      - run:
+          name: Running tests...
+          command: yarn test
 
 
