@@ -4,7 +4,8 @@
 	"main": "server.js",
 	"license": "MIT",
 	"scripts": {
-		"start": "yarn compile && nodemon ./build/server.js",
+		"start":
+			"nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/server.ts",
 		"compile": "rm -rf build && tsc",
 		"lint": "yarn tslint -c tslint.json 'src/**/*.ts'",
 		"lint:fix": "yarn tslint -c tslint.json 'src/**/*.ts' --fix",
@@ -16,6 +17,7 @@
 		}
 	},
 	"dependencies": {
+		"@types/morgan": "^1.7.35",
 		"body-parser": "^1.18.2",
 		"express": "^4.16.2",
 		"mongodb": "^3.0.4"
@@ -25,9 +27,11 @@
 		"@types/express": "^4.11.1",
 		"@types/mongodb": "^3.0.7",
 		"husky": "^0.15.0-rc.8",
+		"morgan": "^1.9.0",
 		"nodemon": "^1.17.1",
 		"prettier": "^1.11.1",
 		"pretty-quick": "^1.4.1",
+		"ts-node": "^5.0.1",
 		"tslint": "^5.9.1",
 		"tslint-config-prettier": "^1.10.0",
 		"typescript": "^2.7.2"
