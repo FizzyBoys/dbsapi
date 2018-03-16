@@ -5,10 +5,10 @@ import { CardsController } from './controllers/CardsController';
 import { Mongo } from './database/Mongo';
 import { CardsService } from './services/CardsService';
 
-// instantiate classes
+// init app
 const app = express();
 
-// initialize middleware
+// init middleware
 app.use(logger('combined'));
 app.use(bodyParser.json());
 
@@ -18,7 +18,7 @@ const M = new Mongo();
 const CS = new CardsService(M);
 const CC = new CardsController(app, CS);
 
-// initalize routes
+// init routes
 CC.makeRoutes();
 
 // Open MongoDB connection
