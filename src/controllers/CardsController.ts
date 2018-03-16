@@ -1,7 +1,7 @@
+import { Response } from 'express';
 import { Request } from 'express-serve-static-core';
 import { Mongo } from '../database/Mongo';
 import { CardsService } from '../services/CardsService';
-import { Response } from 'express';
 
 export class CardsController {
 	private app: any;
@@ -22,14 +22,16 @@ export class CardsController {
 
 		app.post('/create', (req: Request, res: Response) => {
 			const { body } = req;
-			cardService.createCard(body).then(confirmation => {
-				res.status(204).send(confirmation);
-			});
+			cardService
+				.createCard(body)
+				.then(confirmation => res.status(200).send(confirmation));
 		});
 
 		app.delete('/:id', (req: Request, res: Response) => {
 			const { id } = req.params;
-			cardService.deleteOne(id).then(response => response && res.status(204));
+			cardService
+				.deleteOne(id)
+				.then(response => response && res.status(200).send(response));
 		});
 	}
 }
