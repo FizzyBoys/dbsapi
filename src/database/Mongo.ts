@@ -1,7 +1,7 @@
 import { Db, MongoClient, MongoError } from 'mongodb';
 
 export class Mongo {
-	private db: Db;
+	protected db: Db;
 
 	constructor() {
 		// TODO: figure out a better way to do this
