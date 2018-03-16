@@ -3,6 +3,7 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import { CardsController } from './controllers/CardsController';
 import { Mongo } from './database/Mongo';
+import { CardsService } from './services/CardsService';
 
 // instantiate classes
 const app = express();
@@ -14,7 +15,8 @@ app.use(bodyParser.json());
 // TODO: move instantiation to another class
 // init classes
 const M = new Mongo();
-const CC = new CardsController(app, M);
+const CS = new CardsService(M);
+const CC = new CardsController(app, CS);
 
 // initalize routes
 CC.makeRoutes();
