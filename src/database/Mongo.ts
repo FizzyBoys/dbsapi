@@ -26,25 +26,59 @@ export class Mongo {
 				.find()
 				.toArray();
 		} catch (err) {
-			throw new Error('connection not found');
+			new Promise((resolve, reject) =>
+				reject(new Error(`Unable to get documents: ${err.message}`))
+			).then(null, error => {
+				// tslint:disable-next-line
+				console.log(error.message);
+			});
 		}
 	}
 	public async create(payload: any): Promise<any> {
-		try {
-			if (Array.isArray(payload)) {
-				return this.db.collection('test').insertMany(payload);
-			}
-			return this.db.collection('test').insertOne(payload);
-		} catch (err) {
-			throw new Error('connection not found');
+		if (Array.isArray(payload)) {
+			this.db
+				.collection('test')
+				.insertMany(payload)
+				.then(data => {
+					return data;
+				})
+				.catch(err => {
+					new Promise((resolve, reject) =>
+						reject(new Error(`Unable to create document: ${err.message}`))
+					).then(null, error => {
+						// tslint:disable-next-line
+						console.log(error.message);
+					});
+				});
 		}
+		return this.db
+			.collection('test')
+			.insertOne(payload)
+			.then(data => {
+				return data;
+			})
+			.catch(err => {
+				new Promise((resolve, reject) =>
+					reject(new Error(`Unable to create document: ${err.message}`))
+				).then(null, error => {
+					// tslint:disable-next-line
+					console.log(error.message);
+					return;
+				});
+			});
 	}
 
 	public async deleteOne(id: number): Promise<any> {
 		try {
-			return this.db.collection('test').deleteOne({ didItWork: true });
+			return this.db.collection('test').deleteOne({ collectorsNum: id });
 		} catch (err) {
-			throw new Error('connection not found');
+			new Promise((_, reject) =>
+				reject(new Error(`Unable to delete document: ${err.message}`))
+			).then(null, error => {
+				// tslint:disable-next-line
+				console.log('caught', error.message);
+				return;
+			});
 		}
 	}
 }

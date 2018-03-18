@@ -12,6 +12,7 @@ export class CardsController {
 		this.app = app;
 		this.cardService = service;
 	}
+
 	public makeRoutes() {
 		const { app, cardService } = this;
 
@@ -21,6 +22,7 @@ export class CardsController {
 			});
 		});
 
+<<<<<<< HEAD
 		app.post(
 			'/create',
 			basicAuth({ users: { admin: 'admin' } }),
@@ -31,6 +33,14 @@ export class CardsController {
 					.then(confirmation => res.status(200).send(confirmation));
 			}
 		);
+=======
+		app.post('/create', (req: Request, res: Response) => {
+			const { body } = req;
+			cardService.createCard(body).then(confirmation => {
+				res.status(200).send(confirmation);
+			});
+		});
+>>>>>>> feature(none): added improved error handling to mongo
 
 		app.delete(
 			'/:id',
