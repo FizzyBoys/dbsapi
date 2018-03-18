@@ -1,5 +1,6 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+import * as basicAuth from 'express-basic-auth';
 import * as logger from 'morgan';
 import { CardsController } from './controllers/CardsController';
 import { Mongo } from './database/Mongo';
@@ -11,6 +12,10 @@ const app = express();
 // init middleware
 app.use(logger('combined'));
 app.use(bodyParser.json());
+
+const options = {
+	users: { admin: 'admin' }
+};
 
 // TODO: move instantiation to another class
 // init classes
