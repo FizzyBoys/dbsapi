@@ -1,5 +1,5 @@
-import { BaseCardModel, RawBaseCard } from '../models/baseCardModel';
 import { Mongo } from '../database/Mongo';
+import { BaseCardModel, RawBaseCard } from '../models/baseCardModel';
 
 export class CardsService {
 	private model: BaseCardModel;

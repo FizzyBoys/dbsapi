@@ -1,8 +1,8 @@
 import {
 	BaseCard,
+	BaseCardModel,
 	BaseSkill,
-	RawBaseCard,
-	BaseCardModel
+	RawBaseCard
 } from './baseCardModel';
 
 export interface BattleCard extends BaseCard {

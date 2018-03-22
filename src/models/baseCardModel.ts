@@ -1,6 +1,6 @@
-import { BattleCardModel, BattleCard } from './battleCardModel';
-import { ExtraCardModel, ExtraCard } from './extraCardModel';
-import { LeaderCardModel, LeaderCard } from './leaderCardModel';
+import { BattleCard, BattleCardModel } from './battleCardModel';
+import { ExtraCard, ExtraCardModel } from './extraCardModel';
+import { LeaderCard, LeaderCardModel } from './leaderCardModel';
 
 export interface BaseCard {
 	id: string;
@@ -12,7 +12,7 @@ export interface BaseCard {
 	tournamentRelease: Date;
 	img: string;
 	skills: BaseSkill[];
-	[key: string]: string | number | Date | Array<BaseSkill> | LeaderCard;
+	[key: string]: string | number | Date | BaseSkill[] | LeaderCard;
 }
 
 export interface RawBaseCard {
@@ -26,7 +26,7 @@ export interface RawBaseCard {
 	tournamentRelease: string;
 	img: string;
 	skills: BaseSkill[];
-	[key: string]: string | number | Array<BaseSkill> | LeaderCard;
+	[key: string]: string | number | BaseSkill[] | LeaderCard;
 }
 
 export interface BaseSkill {
