@@ -1,5 +1,5 @@
 #ignore compiled JS files
-/build
+build
 
 #node modules
 node_modules
