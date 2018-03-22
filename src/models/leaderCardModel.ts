@@ -1,49 +1,36 @@
-import {
-	BaseCard,
-	BaseSkill,
-	RawBaseCard,
-	BaseCardModel
-} from './baseCardModel';
+import { BaseCard, BaseSkill, RawBaseCard } from './baseCardModel';
 
-export interface BattleCard extends BaseCard {
-	power: number;
-	energy: string;
-	comboEnergy: number;
-	comboPower: number;
+export interface LeaderCard extends BaseCard {
 	character: string;
 	specialTrait: string;
 	era: string;
-	skills: BaseSkill[];
+	power: number;
+	awakened: LeaderCard;
 }
 
-export interface RawBattleCard extends RawBaseCard {
-	power: number;
-	energy: string;
-	comboEnergy: number;
-	comboPower: number;
+export interface RawLeaderCard extends RawBaseCard {
 	character: string;
 	specialTrait: string;
 	era: string;
-	skills: BaseSkill[];
+	power: number;
+	awakened: LeaderCard;
 }
 
-export class BattleCardModel {
-	public async buildOne(rawCard: RawBaseCard): Promise<BattleCard> {
+export class LeaderCardModel {
+	public async buildOne(rawCard: RawBaseCard): Promise<LeaderCard> {
 		const card: any = {};
 		card.id = rawCard.collectorsNum;
 		card.name = rawCard.name;
 		card.type = rawCard.type;
 		card.color = rawCard.color;
 		card.power = rawCard.power;
-		card.energy = rawCard.energy;
-		card.comboEnergy = rawCard.comboEnergy;
-		card.comboPower = rawCard.comboPower;
 		card.character = rawCard.character;
 		card.specialTrait = rawCard.specialTrait;
 		card.era = rawCard.era;
 		card.series = rawCard.series;
 		card.rarity = rawCard.rarity;
 		card.skills = rawCard.skills;
+		card.awakened = rawCard.awakened;
 		const dateFields: string[] = [...rawCard.tournamentRelease.split('-')];
 		card.tournamentRelease = new Date(
 			+dateFields[0],

@@ -1,25 +1,21 @@
-import { BattleCardModel, RawBattleCard } from '../models/battleCardModel';
+import { BaseCardModel, RawBaseCard } from '../models/baseCardModel';
 import { Mongo } from '../database/Mongo';
 
 export class CardsService {
-	private model: BattleCardModel;
+	private model: BaseCardModel;
 	private mongo: Mongo;
 
 	constructor(model, mongo) {
 		this.model = model;
 		this.mongo = mongo;
 	}
+
 	public getAll() {
-<<<<<<< ca0d2e8280c380f959d39f2f2e8898aec36d0bcd
-		return this.mongo.getAll().then((data: object) => {
-			return data;
-		});
-=======
 		return this.mongo
 			.getAll()
-			.then((data: RawBattleCard[]) => this.model.buildMany(data));
->>>>>>> feature(#13): made Battle Card model
+			.then((data: RawBaseCard[]) => this.model.buildMany(data));
 	}
+
 	public createCard(payload: any) {
 		return this.mongo.create(payload).then((confirmation: object) => {
 			let success = false;
@@ -36,6 +32,7 @@ export class CardsService {
 			return response;
 		});
 	}
+	
 	public deleteOne(id: number) {
 		return this.mongo.deleteOne(id).then((confirmation: object) => {
 			let success = false;

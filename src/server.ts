@@ -8,8 +8,12 @@ import { Init } from './init';
 import { CardsController } from './controllers/CardsController';
 import { Mongo } from './database/Mongo';
 import { CardsService } from './services/CardsService';
+<<<<<<< 2bd2f70d4c5c50c4f823c974769d164395e5c253
 import { BattleCardModel } from './models/battleCardModel';
 >>>>>>> feature(#13): made Battle Card model
+=======
+import { BaseCardModel } from './models/baseCardModel';
+>>>>>>> added card models
 
 // Start up express servcer
 const app = express();
@@ -26,6 +30,7 @@ const options = {
 // TODO: move instantiation to another class
 // init classes
 const M = new Mongo();
+<<<<<<< 2bd2f70d4c5c50c4f823c974769d164395e5c253
 <<<<<<< ca0d2e8280c380f959d39f2f2e8898aec36d0bcd
 const CS = new CardsService(M);
 const CC = new CardsController(app, CS);
@@ -35,6 +40,9 @@ const I = new Init(app);
 >>>>>>> feature(none): added improved error handling to mongo
 =======
 const BCM = new BattleCardModel();
+=======
+const BCM = new BaseCardModel();
+>>>>>>> added card models
 const CS = new CardsService(BCM, M);
 const CC = new CardsController(app, M, CS);
 >>>>>>> feature(#13): made Battle Card model
