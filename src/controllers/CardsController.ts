@@ -1,17 +1,14 @@
 import { Response } from 'express';
 import * as basicAuth from 'express-basic-auth';
 import { Request } from 'express-serve-static-core';
-import { Mongo } from '../database/Mongo';
 import { CardsService } from '../services/CardsService';
 
 export class CardsController {
 	private app: any;
 	private cardService: CardsService;
-	private mongo: Mongo;
 
-	constructor(app, mongo, service) {
+	constructor(app, service) {
 		this.app = app;
-		this.mongo = mongo;
 		this.cardService = service;
 	}
 

@@ -36,14 +36,14 @@ export interface BaseSkill {
 }
 
 export class BaseCardModel {
-	public BCM: BattleCardModel;
-	public ECM: ExtraCardModel;
-	public LCM: LeaderCardModel;
+	private BCM: BattleCardModel;
+	private ECM: ExtraCardModel;
+	private LCM: LeaderCardModel;
 
-	constructor() {
-		this.BCM = new BattleCardModel();
-		this.ECM = new ExtraCardModel();
-		this.LCM = new LeaderCardModel();
+	constructor(BCM, ECM, LCM) {
+		this.BCM = BCM;
+		this.ECM = ECM;
+		this.LCM = LCM;
 	}
 	public async buildMany(rawData: RawBaseCard[]): Promise<BaseCard[]> {
 		const cards: BaseCard[] = [];
@@ -51,7 +51,7 @@ export class BaseCardModel {
 			if (rawCard.type === 'Battle') {
 				cards.push(await this.BCM.buildOne(rawCard));
 			} else if (rawCard.type === 'Extra') {
-				cards.push(await this.BCM.buildOne(rawCard));
+				cards.push(await this.ECM.buildOne(rawCard));
 			} else {
 				cards.push(await this.LCM.buildOne(rawCard));
 			}

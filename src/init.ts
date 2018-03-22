@@ -1,12 +1,20 @@
 import { CardsController } from './controllers/CardsController';
 import { Mongo } from './database/Mongo';
 import { CardsService } from './services/CardsService';
+import { BattleCardModel } from './models/battleCardModel';
+import { ExtraCardModel } from './models/extraCardModel';
+import { LeaderCardModel } from './models/leaderCardModel';
+import { BaseCardModel } from './models/baseCardModel';
 
 export class Init {
 	private app: any;
 	private M: Mongo;
 	private CS: CardsService;
 	private CC: CardsController;
+	private BCM: BattleCardModel;
+	private ECM: ExtraCardModel;
+	private LCM: LeaderCardModel;
+	private Model: BaseCardModel;
 
 	constructor(app) {
 		this.app = app;
@@ -22,7 +30,11 @@ export class Init {
 
 	private initClasses() {
 		this.M = new Mongo();
-		this.CS = new CardsService(this.M);
+		this.BCM = new BattleCardModel();
+		this.ECM = new ExtraCardModel();
+		this.LCM = new LeaderCardModel();
+		this.Model = new BaseCardModel(this.BCM, this.ECM, this.LCM);
+		this.CS = new CardsService(this.Model, this.M);
 		this.CC = new CardsController(this.app, this.CS);
 	}
 
