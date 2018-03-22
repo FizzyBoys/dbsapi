@@ -1,6 +1,4 @@
-import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { Mongo } from '../../../src/database/Mongo';
 import { CardsService } from '../../../src/services/CardsService';
 
 const M: any = {
@@ -9,10 +7,15 @@ const M: any = {
 	getAll: Function
 };
 
-const service = new CardsService(M);
+const Model: any = {
+	buildMany: Function
+};
+
+const service = new CardsService(Model, M);
 
 describe('CardsService', () => {
 	it('CardsService::getAll', async () => {
+		const buildMany = sinon.stub(Model, 'buildMany').returns({});
 		const mongo = sinon.stub(M, 'getAll').resolves();
 		await service.getAll();
 

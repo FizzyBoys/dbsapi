@@ -1,0 +1,34 @@
+{
+	"name": "Meta-Rilldo, Form Perfected",
+	"collectorsNum": "BT3-018",
+	"type": "Battle",
+	"color": "Red",
+	"power": 30000,
+	"energy": [7, "4R"],
+	"comboEnergy": 1,
+	"comboPower": 10000,
+	"character": "General Rilldo",
+	"specialTrait": "Machine Mutant",
+	"era": "Black Star Dragon Ball Saga",
+	"series": "CROSS WORLDS",
+	"rarity": "SR",
+	"skills": [
+		{
+			"keywords": ["Ex-Evolve"],
+			"text":
+				"R, place 1 card from your hand in the Drop Area : Red ＜General Rilldo＞ with an energy cost of 5 or more. (Play this card on top of the specified card)",
+			"cost": ["1", "1R", "place 1 card from your hand in the Drop Area"]
+		},
+		{
+			"keywords": ["Double Strike"]
+		},
+		{
+			"keywords": ["Activate:Main", "Once per turn"],
+			"text":
+				"Place 1 {Planet M-2} from your hand or Battle Area in the Drop Area : Draw 2 cards. Then, choose your opponent's Leader Card, and it loses -5000 power for the duration of the turn. Then, choose all of your opponent's Battle Cards, and they lose -10000 power for the duration of the turn.",
+			"cost": ["place 1 {Planet M-2} from your hand in the Drop Area"]
+		}
+	],
+	"tournamentRelease": "2018-03-09",
+	"img": "http://www.dbs-cardgame.com/images/cardlist/cardimg/BT3-018.png"
+}
