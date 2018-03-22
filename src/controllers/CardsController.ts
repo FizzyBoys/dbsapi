@@ -23,7 +23,7 @@ export class CardsController {
 
 		app.post(
 			'/create',
-			basicAuth({ users: { admin: 'admin' } }),
+			basicAuth({ users: { [process.env.AUTH_USER]: process.env.AUTH_PWD } }),
 			(req: Request, res: Response) => {
 				const { body } = req;
 				cardService
@@ -34,7 +34,7 @@ export class CardsController {
 
 		app.delete(
 			'/:id',
-			basicAuth({ users: { admin: 'admin' } }),
+			basicAuth({ users: { [process.env.AUTH_USER]: process.env.AUTH_PWD } }),
 			(req: Request, res: Response) => {
 				const { id } = req.params;
 				cardService

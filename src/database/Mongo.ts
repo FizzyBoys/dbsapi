@@ -8,13 +8,15 @@ export class Mongo {
 		this.db = null;
 	}
 	public async connect(): Promise<void> {
+		const { MONGO_PWD, MONGO_USER, MONGO_HOST, MONGO_DB_NAME } = process.env;
+
 		MongoClient.connect(
-			'mongodb://dbsapi:mustGetTheDragonBalls@ds111059.mlab.com:11059/dbsdata',
+			`mongodb://${MONGO_USER}:${MONGO_PWD}@${MONGO_HOST}/${MONGO_DB_NAME}`,
 			(err: MongoError, client) => {
 				if (err) {
 					throw new Error(`The Connection cannot be established ${err}`);
 				}
-				this.db = client.db('dbsdata');
+				this.db = client.db(MONGO_DB_NAME);
 				return true;
 			}
 		);

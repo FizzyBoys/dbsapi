@@ -4,8 +4,7 @@
 	"main": "server.js",
 	"license": "MIT",
 	"scripts": {
-		"start":
-			"nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/server.ts",
+		"start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/server.ts",
 		"compile": "rm -rf build && tsc",
 		"lint": "yarn tslint -c tslint.json 'src/**/*.ts'",
 		"lint:fix": "yarn tslint -c tslint.json 'src/**/*.ts' --fix",
@@ -13,7 +12,9 @@
 		"test": "yarn lint && yarn test:unit"
 	},
 	"babel": {
-		"presets": ["es2015"]
+		"presets": [
+			"es2015"
+		]
 	},
 	"husky": {
 		"hooks": {
@@ -24,6 +25,7 @@
 		"@types/morgan": "^1.7.35",
 		"@types/sinon": "^4.3.0",
 		"body-parser": "^1.18.2",
+		"dotenv": "^5.0.1",
 		"express": "^4.16.2",
 		"express-basic-auth": "^1.1.4",
 		"mongodb": "^3.0.4",
