@@ -4,6 +4,9 @@ build
 #node modules
 node_modules
 
+#environmental variables
+.env
+
 # yarn
 yarn-debug.log
 yarn-error.log
