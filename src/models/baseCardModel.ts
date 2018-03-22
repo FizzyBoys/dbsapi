@@ -58,8 +58,6 @@ export class BaseCardModel {
 		});
 		return cards;
 	}
-	// to-do: change DB data to enable this
-
 	// private convertEnergy(energy: Energy): string {
 	// 	const color: string[] = energy.colorRequirement.split('');
 	// 	return `${energy.totalCost}${color[1].repeat(+color[0])}`;
