@@ -1,10 +1,10 @@
 import { CardsController } from './controllers/CardsController';
 import { Mongo } from './database/Mongo';
-import { CardsService } from './services/CardsService';
+import { BaseCardModel } from './models/baseCardModel';
 import { BattleCardModel } from './models/battleCardModel';
 import { ExtraCardModel } from './models/extraCardModel';
 import { LeaderCardModel } from './models/leaderCardModel';
-import { BaseCardModel } from './models/baseCardModel';
+import { CardsService } from './services/CardsService';
 
 export class Init {
 	private app: any;

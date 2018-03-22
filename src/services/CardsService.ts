@@ -32,7 +32,7 @@ export class CardsService {
 			return response;
 		});
 	}
-	
+
 	public deleteOne(id: number) {
 		return this.mongo.deleteOne(id).then((confirmation: object) => {
 			let success = false;
