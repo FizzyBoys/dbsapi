@@ -4,7 +4,8 @@ import { CardsService } from '../../../src/services/CardsService';
 const M: any = {
 	create: Function,
 	deleteOne: Function,
-	getAll: Function
+	getAll: Function,
+	updateOne: Function
 };
 
 const Model: any = {
@@ -38,7 +39,7 @@ describe('CardsService', () => {
 
 	it('CardsService::updateOne', async () => {
 		const mongo = sinon.stub(M, 'updateOne').resolves();
-		await service.updateOne(1);
+		await service.updateOne(1, {});
 
 		sinon.assert.calledOnce(mongo);
 	});
