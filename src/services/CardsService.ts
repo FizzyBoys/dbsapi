@@ -48,4 +48,20 @@ export class CardsService {
 			return response;
 		});
 	}
+
+	public updateOne(id: number, update: object) {
+		return this.mongo.updateOne(id, update).then((confirmation: object) => {
+			let success = false;
+			let delta = 0;
+			if (confirmation) {
+				const { modifiedCount }: any = confirmation;
+				(success = modifiedCount >= 1), (delta = modifiedCount);
+			}
+			const response: object = {
+				delta,
+				success
+			};
+			return response;
+		});
+	}
 }

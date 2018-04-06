@@ -42,5 +42,17 @@ export class CardsController {
 					.then(response => response && res.status(200).send(response));
 			}
 		);
+
+		app.put(
+			'/:id',
+			basicAuth({ users: { admin: 'admin' } }),
+			(req: Request, res: Response) => {
+				const { id } = req.params;
+				const { body } = req;
+				cardService
+					.updateOne(id, body)
+					.then(response => response && res.status(200).send(response));
+			}
+		);
 	}
 }

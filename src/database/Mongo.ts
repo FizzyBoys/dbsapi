@@ -81,4 +81,20 @@ export class Mongo {
 			});
 		}
 	}
+
+	public async updateOne(id: number, update: object): Promise<any> {
+		try {
+			return this.db
+				.collection('test')
+				.updateOne({ collectorsNum: id }, { $set: update });
+		} catch (err) {
+			new Promise((_, reject) =>
+				reject(new Error(`Unable to update document: ${err.message}`))
+			).then(null, error => {
+				// tslint:disable-next-line
+				console.log('caught', error.message);
+				return;
+			});
+		}
+	}
 }

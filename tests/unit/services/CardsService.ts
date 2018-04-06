@@ -35,4 +35,11 @@ describe('CardsService', () => {
 
 		sinon.assert.calledOnce(mongo);
 	});
+
+	it('CardsService::updateOne', async () => {
+		const mongo = sinon.stub(M, 'updateOne').resolves();
+		await service.updateOne(1);
+
+		sinon.assert.calledOnce(mongo);
+	});
 });
