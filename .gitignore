@@ -1,6 +1,10 @@
 #ignore compiled JS files
 build
 
+# testing coverage data
+.nyc_output
+coverage
+
 #node modules
 node_modules
 
